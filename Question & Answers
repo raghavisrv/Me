@@ -1,3 +1,4 @@
 Choice = "What do you prefer ?"
 
 print(Choice , Chat)
+print("answers in yes or no"
