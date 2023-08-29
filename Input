@@ -1,5 +1,6 @@
 chat = input('Chat with me')
 chat = str(chat)
+print("This is me")
 
 from sklearn.tree import DecisionTreeClassifier
 import numpy as np
@@ -57,4 +58,6 @@ recommended_device = "Xbox Series S " if clf.predict(z) == 2
 
 # Display the recommendation
 print(f"Recommended device: {recommended_device}")
+
+print("This is still me")
 
