@@ -44,10 +44,10 @@ y = np.array([1 if X[0, 0] == 1 else 0])
 clf = DecisionTreeClassifier()
 
 # Train the model
-clf.fit(X, y)
+clf.fit(X,y,z)
 
 # Predict the recommended device
-recommended_device = "PS5" if clf.predict(X) == 1 else "Xbox Series X"
+recommended_device = "PS5" if clf.predict(X) == "Xbox Series X" if clf.predict(y)
 
 # Display the recommendation
 print(f"Recommended device: {recommended_device}")
