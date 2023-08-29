@@ -7,7 +7,8 @@ import numpy as np
 # Define the questions and possible responses
 questions = [
     "Do you prioritize saving money in the short run?",
-    "Do you prioritize saving money in the long run?"
+    "Do you prioritize saving money in the long run?" ,
+    "Do you want to save money in the short and long run?"
 ]
 
 responses = [
@@ -37,8 +38,11 @@ for i, question in enumerate(questions):
 X = np.array(X).reshape(1, -1)
 
 # Define the target variable (device choice)
-# 1 for PS5, 0 for Xbox Series X
-y = np.array([1 if X[0, 0] == 1 else 0])
+# 1 for PS5, 0 for Xbox Series X , 2 for Xbox Series S
+x= np.array([0])
+y= np.array([1])
+z= np.array([2])
+
 
 # Create a decision tree classifier
 clf = DecisionTreeClassifier()
@@ -47,7 +51,9 @@ clf = DecisionTreeClassifier()
 clf.fit(X,y,z)
 
 # Predict the recommended device
-recommended_device = "PS5" if clf.predict(X) == "Xbox Series X" if clf.predict(y)
+recommended_device = "PS5" if clf.predict(X) == 1 
+recommended_device = "Xbox Series X" if clf.predict(y) == 0
+recommended_device = "Xbox Series S " if clf.predict(z) == 2
 
 # Display the recommendation
 print(f"Recommended device: {recommended_device}")
