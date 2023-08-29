@@ -1,4 +1,54 @@
 chat = input('Chat with me')
 chat = str(chat)
 
+from sklearn.tree import DecisionTreeClassifier
+import numpy as np
+
+# Define the questions and possible responses
+questions = [
+    "Do you prioritize saving money in the short run?",
+    "Do you prioritize saving money in the long run?"
+]
+
+responses = [
+    ["Yes", "No"],  # Responses to question 1
+    ["Yes", "No"]   # Responses to question 2
+]
+
+# Mapping responses to numerical values
+response_mapping = {
+    "Yes": 1,
+    "No": 0
+}
+
+# Define the features (answers to questions)
+X = []
+
+# Collect user responses to the questions
+for i, question in enumerate(questions):
+    print(question)
+    response = input("Your response (Yes/No): ").strip()
+    if response not in response_mapping:
+        print("Invalid response. Please answer with 'Yes' or 'No'.")
+        exit(1)
+    X.append(response_mapping[response])
+
+# Reshape the feature array
+X = np.array(X).reshape(1, -1)
+
+# Define the target variable (device choice)
+# 1 for PS5, 0 for Xbox Series X
+y = np.array([1 if X[0, 0] == 1 else 0])
+
+# Create a decision tree classifier
+clf = DecisionTreeClassifier()
+
+# Train the model
+clf.fit(X, y)
+
+# Predict the recommended device
+recommended_device = "PS5" if clf.predict(X) == 1 else "Xbox Series X"
+
+# Display the recommendation
+print(f"Recommended device: {recommended_device}")
 
